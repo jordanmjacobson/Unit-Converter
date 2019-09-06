@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,13 +21,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        final android.widget.TextView result = findViewById(R.id.result);
+        final EditText input = findViewById(R.id.input);
+        String userInput = input.getText().toString(); //extracts value from user input
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Convert to Celcius", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                //insert fucntion call here
+                // int converted = celcius(userInput);
+                int converted = celcius(input.getText().toString());
+                // result.setVisibility();
+                result.setText("In Celcius: " + converted);
             }
         });
     }
@@ -51,5 +59,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    // @Override
+    public int celcius(String str){
+        int inputVal = Integer.parseInt(str);
+        return ((inputVal-32) * 5) /9; //formula to convert farenheit to celcius
+    }
+    // @Override
+    public float meters(String str){
+        int inputVal = Integer.parseInt(str); //feet
+        return (float) (inputVal/3.281);
     }
 }
