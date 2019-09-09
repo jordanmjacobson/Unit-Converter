@@ -1,2 +1,2 @@
 # Unit-Converter
-Converts Units
+Converts farenhet to celcius. 
